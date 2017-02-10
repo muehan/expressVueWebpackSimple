@@ -5,7 +5,7 @@ var webpack = require('webpack')
 module.exports = {
     entry: './Client/src/main.js',
     output: {
-        path: path.resolve(__dirname, './dist'),
+        path: path.resolve(__dirname, './Client/dist'),
         publicPath: '/Client/dist/',
         filename: 'build.js'
     },
@@ -53,7 +53,7 @@ if (process.env.NODE_ENV === 'production') {
     module.exports.plugins = (module.exports.plugins || []).concat([
         new webpack.DefinePlugin({
             'process.env': {
-                NODE_ENV: '"production"'
+                NODE_ENV: '"development"' //production
             }
         }),
         new webpack.optimize.UglifyJsPlugin({

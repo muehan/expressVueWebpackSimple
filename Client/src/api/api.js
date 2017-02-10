@@ -12,9 +12,9 @@ Vue.http.options.root = "http://localhost:3000/api";
 const http = Vue.http
 
 export default {
-    getIssues() {
-        return http.get('test')
-            .then(response => Promise.resolve(response.body.issues))
+    getUsers() {
+        return http.get('users')
+            .then(response => Promise.resolve(response))
             .catch(error => Promise.reject(error));
     },
 

@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-      <user />>
+      <h1>example</h1>
+      <user />
   </div>
 </template>
 
@@ -16,7 +17,10 @@
         },
         components: {
             User
-        }
+        },
+        created() {
+            this.$store.dispatch('addUsers');
+        },
     }
 </script>
 

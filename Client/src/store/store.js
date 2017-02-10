@@ -1,25 +1,24 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import api from '../api/api';
 
 Vue.use(Vuex)
 
 
 export default new Vuex.Store({
     state: {
-        todos: [],
-        newtodo: ""
+        users: [],
     },
     mutations: {
-        ADD_TODO(state, todo) {
-            state.todos.push({
-                text: todo
-            });
-            state.newtodo = todo;
+        ADD_USERS(state, users) {
+            state.users = users;
         }
     },
     actions: {
-        addTodo({ commit }, todo) {
-            commit('ADD_TODO', todo)
+        addUsers({ commit }) {
+            api.getUsers()
+                .then(response => commit('ADD_USERS', response.body))
+                .catch(error => console.log(error));
         }
         // also possible
         // addTodo = function(store){
@@ -28,7 +27,6 @@ export default new Vuex.Store({
         // }
     },
     getters: {
-        newTodo: state => state.newTodo,
-        todos: state => state.todos
+        users: state => state.users,
     }
 })
